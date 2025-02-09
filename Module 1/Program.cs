@@ -4,6 +4,8 @@
 
 using System;
 using System.Net.NetworkInformation;
+using System.Numerics;
+using System.Threading.Tasks;
 using Microsoft.VisualBasic;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -26,7 +28,7 @@ namespace Module_1
             string myText = "Hello";
             float max = 2.3f;
 
-            Console.WriteLine($"{ myNum},{ myDoubleNum},{ myLetter},{ myBool},{ myText}, {max}");
+            Console.WriteLine($"{myNum},{myDoubleNum},{myLetter},{myBool},{myText}, {max}");
 
 
             //Constants
@@ -36,7 +38,7 @@ namespace Module_1
 
             Console.Write(special);
             Console.WriteLine(special);
-          
+
 
             //Display Variables
             //The WriteLine() method is often used to display variable values to the console window.
@@ -52,11 +54,11 @@ namespace Module_1
             Console.WriteLine(x + y + z);
 
 
-            
-           //Identifiers
+
+            //Identifiers
 
 
-             //All C# variables must be identified with unique names.
+            //All C# variables must be identified with unique names.
             //These unique names are called identifiers.
             int m = 60;
             Console.WriteLine(m);
@@ -79,7 +81,7 @@ namespace Module_1
 
             int num = 10;
             double nums = num;
-           Console.WriteLine(num);
+            Console.WriteLine(num);
             Console.WriteLine(nums);
 
             //Explicit Casting
@@ -124,17 +126,100 @@ namespace Module_1
             {
                 Console.WriteLine("The String is not in required format");
             }
+            int a = 10;
+            Console.WriteLine(a);
 
 
+            //Task-3:-Operators(Arithmetic, Assignment, Comparison, Logical)
 
+            //Task 3.1:-Basic Calculator – Take two numbers as input and perform addition,
+            //subtraction, multiplication, division, and modulus operations.
 
+            Console.Write("Enter the first number: ");
+            double num1 = Convert.ToDouble(Console.ReadLine());
 
+            Console.Write("Enter the second number: ");
+            int num2 = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine($"Addition:{num1 + num2}");
+            Console.WriteLine($"Subtraction:{num1 - num2}");
+            Console.WriteLine($"Multiply:{num1 * num2}");
 
+            if (num2 != 0)
+            {
+                Console.WriteLine($"Remainder:{num1 % num2}");
+                Console.WriteLine($"Dividend:{num1 / num2}");
+            }
+            else
+            {
+                Console.WriteLine("Error:Division by zero is not allowed");
+            }
+
+            //Task 3.2- Voting Eligibility Checker – Ask the user for their age and citizenship status(Y / N)
+            //and determine if they are eligible to vote(Age ≥ 18 and must be a citizen).
+
+            Console.Write("Enter the age:");
+            int age = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter the citizenship status (Y/N):");
+            char status = Convert.ToChar(Console.ReadLine());
+
+            if (age >= 18 && status == 'Y')
+            {
+                Console.WriteLine("You are eligible to vote");
+            }
+            else
+            {
+                Console.WriteLine("You are not eligible to vote.");
+            }
+
+            //Task 3.3:-Find the Largest Number – Take three numbers as
+            //input and determine the largest using comparison operators.
+
+            Console.Write("Enter the first number: ");
+            int n1 = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter the second number: ");
+            int n2 = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Enter the third number: ");
+            int n3 = Convert.ToInt32(Console.ReadLine());
+
+            int largest;
+
+            if (n1 >= n2 && n1 >= n3)
+            {
+                largest = n1;
+            }
+            else if (n2 >= n1 && n2 >= n3)
+            {
+                largest = n2;
+            }
+            else
+            {
+                largest = n3;
+            }
+
+            Console.WriteLine($"The largest number is: {largest}");
+
+            //Task 4- Strings(Concatenation, Interpolation, Access Strings, Special charec., Boolean
 
 
         }
-
-
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+    
