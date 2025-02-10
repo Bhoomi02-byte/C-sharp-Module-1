@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Numerics;
 using System.Reflection;
@@ -168,7 +169,7 @@ namespace Module_1
             Console.Write("Enter the citizenship status (Y/N):");
             char status = Convert.ToChar(Console.ReadLine());
 
-            if (age >= 18 && status == 'Y')
+            if (age >= 18 && (status == 'Y' || status == 'y'))
             {
                 Console.WriteLine("You are eligible to vote");
             }
@@ -328,6 +329,235 @@ namespace Module_1
 
             // Display result
             Console.WriteLine($"Is {year} a leap year? {isLeapYear}");
+
+
+            //Task 5: Statements(if, else, switch), Loop(for, foreach, while), Break and Continue
+            //Task 5.1 :Statements(if, else, switch)
+
+            //Task 5.1.1: Grade Calculator – Take a student's score as input 
+            //and determine the grade (A, B, C, D, or F) using an if-else statement.
+
+            Console.Write("Enter the marks: ");
+            int marks = Convert.ToInt32(Console.ReadLine());
+
+            if (marks >= 90)
+            {
+                Console.WriteLine("A grade");
+            }
+            else if (marks >= 80)
+            {
+                Console.WriteLine("A grade");
+            }
+            else if (marks >= 70)
+            {
+                Console.WriteLine("B grade");
+            }
+            else if (marks >= 60)
+            {
+                Console.WriteLine("C grade");
+            }
+            else if (marks >= 50)
+            {
+                Console.WriteLine("D grade");
+            }
+            else if (marks >= 40)
+            {
+                Console.WriteLine("E grade");
+            }
+            else
+            {
+                Console.WriteLine("F grade");
+            }
+
+            //Task 5.1.2:Day of the Week – Take a number(1 - 7) as input
+            //and display the corresponding day of the week using a switch statement.
+
+            Console.Write("Enter a number between 1-7: ");
+            int dayNum = Convert.ToInt32(Console.ReadLine());
+            switch (dayNum)
+            {
+                case 1:{
+                        Console.WriteLine("Monday");
+                        break;
+                    }
+                case 2:
+                    {
+                        Console.WriteLine("Teusday");
+                        break;
+                    }
+                case 3:
+                    {
+                        Console.WriteLine("Wednesday");
+                        break;
+                    }
+                case 4:
+                    {
+                        Console.WriteLine("Thursday");
+                        break;
+                    }
+                case 5:
+                    {
+                        Console.WriteLine("Friday");
+                        break;
+                    }
+                case 6:
+                    {
+                        Console.WriteLine("Saturday");
+                        break;
+                    }
+                case 7:
+                    {
+                        Console.WriteLine("Sunday");
+                        break;
+                    }
+                default:
+                    {
+                        Console.WriteLine("Wrong Input!! Please try again");
+                        break;
+
+                    }
+
+            }
+            //Task 5.1.3 : Even or Odd (Switch Expression) –
+            //Use a switch expression to check if a number is even or odd.
+
+            Console.Write("Enter a number : ");
+            int checkNum = Convert.ToInt32(Console.ReadLine());
+
+            switch (checkNum%2) {
+
+                case 0:
+                    Console.WriteLine($"{checkNum} is Even Number");
+                    break;
+                case 1:
+                    Console.WriteLine($"{checkNum} is Odd Number is");
+                    break;
+             }
+
+
+            //Task 5.2:Loops (for, foreach, while)
+            //Task 5.2.1:Multiplication Table – Take a number as input
+            //and print its multiplication table using a for loop.
+
+            Console.Write("Enter a number : ");
+            int inputNum = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine($"Multiplication table {i}:{inputNum*i}");
+            }
+
+            //Taske 5.2.2:Sum of Array Elements – Given an array of numbers,
+            //use a foreach loop to calculate and display the sum.
+            int[] array = { 12,23, 45, 6, 7 };
+            int sum = 0;
+            foreach (int i in array)
+            {
+                sum+= i;
+            }
+            Console.WriteLine($"Sum of the elements in array :{sum}\n");
+
+            //Task 5.2.3:Number Guessing Game – Generate a random number (1-100)
+            //and let the user guess it using a while loop until they get it right.
+            Random random = new Random();
+            int randomNum=random.Next(1,101);
+
+            Console.WriteLine($" Random number from 1-100 : {randomNum}");
+
+            Console.Write("Guess a number from 1-100 : ");
+            int guessNum = Convert.ToInt32(Console.ReadLine());
+
+            while (true)
+            {
+                if (randomNum == guessNum)
+                {
+                    Console.WriteLine("You guessed it right!! Hurray\n");
+                    break;
+                }
+                Console.Write("Guess again : ");
+                guessNum = Convert.ToInt32(Console.ReadLine());
+
+            }
+
+            //Task 5.3:Break and Continue
+            //Task 5.3.1:Find First Divisible Number – Use a for loop to find the first number
+            //divisible by both 3 and 5 in a given range. Use break to exit the loop when found.
+
+            Console.Write("Enter a starting number : ");
+            int firstNum = Convert.ToInt32(Console.ReadLine());
+            Console.Write("Enter a ending number : ");
+            int endNum = Convert.ToInt32(Console.ReadLine());
+
+            for (int i = firstNum; i < =endNum; i++)
+            {
+                if((i%3==0) && (i % 5==0))
+                {
+                    Console.WriteLine($"Number is divisible by both 3 and 5: {i}\n");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("No nuumber is divisible\n");
+                }
+            }
+
+            //task 5.3.2 :Skip Even Numbers – Print numbers from 1 to 10 using a for loop but skip even numbers using continue.
+
+            for (int i = 1; i < 10; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    continue;
+                }
+                Console.WriteLine($"Number present :{i}\n");
+            }
+
+            //task 5.3.3:User Login Attempts – Allow the user to enter a password with
+            //a maximum of 3 attempts using a while loop and break if successful.
+
+            Console.Write("Enter a password : ");
+            
+
+            int attempts = 0;
+            while (true)
+            {
+                string passwordStr = Console.ReadLine() ?? "";
+                if (correctPassword == passwordStr)
+                {
+                    Console.WriteLine("Correct Password!!\n ");
+                    break;
+
+                }
+                attempts++;
+                if (attempts == 3)
+                {
+                    Console.WriteLine("Your max limit is 3 ");
+                    break;
+                }
+                Console.WriteLine("Wrong password!! Try again\n");
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
