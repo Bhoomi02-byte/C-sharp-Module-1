@@ -3,10 +3,15 @@
 
 
 using System;
+using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Numerics;
+using System.Reflection;
+using System.Reflection.Emit;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.VisualBasic;
+using static System.Formats.Asn1.AsnWriter;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -201,24 +206,141 @@ namespace Module_1
 
             Console.WriteLine($"The largest number is: {largest}");
 
+
+
             //Task 4- Strings(Concatenation, Interpolation, Access Strings, Special charec., Boolean
+
+            //Task 4.1:Full Name Generator – Take first name and last name as input 
+            //and display the full name using concatenation (+) and string interpolation($"").
+
+            Console.Write("Enter the first name: ");
+            string first_name = Console.ReadLine();
+
+            Console.Write("Enter the last name: ");
+            string last_name = Console.ReadLine();
+
+
+
+            Console.WriteLine(first_name + " " + last_name);
+            Console.WriteLine($"Full name : {first_name} {last_name}");
+
+
+            //Task 4.2- Character Extractor – Take a string as input and
+            //print the first, last, and middle character(if the length is odd) using indexing.
+
+            Console.Write("Enter a string: ");
+            string input = Console.ReadLine();
+
+            // Check if the input is empty
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("Invalid input! Please enter a valid string.");
+                return;
+            }
+
+            // Extracting first and last character
+            char firstChar = input[0];
+            char lastChar = input[input.Length - 1];
+
+            Console.WriteLine($"First character: {firstChar}");
+            Console.WriteLine($"Last character: {lastChar}");
+
+            // Check if the length is odd, then extract the middle character
+            if (input.Length % 2 != 0)
+            {
+                char middleChar = input[input.Length / 2];
+                Console.WriteLine($"Middle character: {middleChar}");
+            }
+
+            //Task 4.3- Escape Sequence Formatter – Print a multi - line formatted string using
+            //special characters (\n, \t, \", \\) to display a structured output.
+
+            Console.WriteLine("Escape Sequence Formatter\n");
+
+            Console.WriteLine("1. New Line Example:");
+            Console.WriteLine("Hello, World!\nWelcome to C# programming.\n");
+
+            Console.WriteLine("2. Tab Example:");
+            Console.WriteLine("Name:\tJohn Doe");
+            Console.WriteLine("Age:\t25\n");
+
+            Console.WriteLine("3. Quote Example:");
+            Console.WriteLine("He said, \"C# is amazing!\"\n");
+
+            Console.WriteLine("4. Backslash Example:");
+            Console.WriteLine("C:\\Program Files\\Microsoft\\CSharp\n");
+
+
+            //task 4.4:Even or Odd Checker – Take a number as input and use a boolean
+            //expression to check if it is even (true) or odd (false).
+
+            Console.Write("Enter a number: ");
+
+            // Using TryParse to handle invalid inputs
+            if (!int.TryParse(Console.ReadLine(), out int number))
+            {
+                Console.WriteLine("Invalid input! Please enter a valid integer.");
+                return;
+            }
+
+            // Boolean expression to check even or odd
+            bool isEven = (number % 2 == 0);
+
+            // Display the result
+            Console.WriteLine($"Is the number even? {isEven}");
+
+
+            //Task 4.5:Login Authentication – Take a username and password as input,
+            //compare them with predefined values, and return true if they match, otherwise false.
+
+
+            // Predefined username and password
+            string correctUsername = "admin";
+        string correctPassword = "password123";
+
+        // Taking user input
+        Console.Write("Enter username: ");
+        string username = Console.ReadLine();
+
+        Console.Write("Enter password: ");
+        string password = Console.ReadLine();
+
+        // Authentication check using a boolean expression
+        bool isAuthenticated = (username == correctUsername && password == correctPassword);
+
+        // Display result
+        Console.WriteLine($"Login Successful: {isAuthenticated}");
+
+            //task 4.5.1: Leap Year Validator – Take a year as input and check if
+            //it is a leap year using boolean conditions (true for leap year, false otherwise).
+
+            Console.Write("Enter a year: ");
+
+            // Using TryParse to handle invalid inputs
+            if (!int.TryParse(Console.ReadLine(), out int year) || year < 0)
+            {
+                Console.WriteLine("Invalid input! Please enter a valid positive year.");
+                return;
+            }
+
+            // Boolean expression to check leap year conditions
+            bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+
+            // Display result
+            Console.WriteLine($"Is {year} a leap year? {isLeapYear}");
+
+
+
+
+
+
+
+
+
 
 
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
