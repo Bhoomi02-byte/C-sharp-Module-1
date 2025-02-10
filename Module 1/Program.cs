@@ -488,7 +488,7 @@ namespace Module_1
             Console.Write("Enter a ending number : ");
             int endNum = Convert.ToInt32(Console.ReadLine());
 
-            for (int i = firstNum; i < =endNum; i++)
+            for (int i = firstNum; i <= endNum; i++)
             {
                 if((i%3==0) && (i % 5==0))
                 {
